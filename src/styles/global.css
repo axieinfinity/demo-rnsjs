@@ -1,0 +1,133 @@
+@import "@axieinfinity/ronin-ui/dist/bundle.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root{
+    --scrollbar-width: 6px;
+  }
+
+  * {
+    scrollbar-color: var(--dg-tc-border) transparent;
+    scrollbar-width: thin;
+  }
+  ::-webkit-scrollbar {
+    -webkit-appearance: none;
+    width: var(--scrollbar-width);
+    height: var(--scrollbar-width);
+  }
+  ::-webkit-scrollbar-corner {
+      background-color: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply invisible;
+
+    background-color: var(--dg-tc-border);
+    border-radius: 10px;
+  }
+  :hover::-webkit-scrollbar-thumb {
+      @apply visible;
+  }
+  
+  body {
+    @apply m-0 box-border bg-tc-bg font-sans text-tc-text antialiased;
+
+    /* TODO: Remove font-size mapping */
+    font-size: var(--dg-t-body-md-font-size);
+    font-weight: var(--dg-t-body-md-font-weight);
+    line-height: var(--dg-t-body-md-line-height);
+
+    font-feature-settings: "tnum" on, "lnum" on, "ss01" on, "ss02" on, "ss04" on, "cv08" on,
+      "case" on;
+
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  button:focus,
+  input:focus {
+    outline: none;
+    box-shadow: none;
+  }
+}
+
+@layer components {
+  /* TODO: Remove font-size mapping */
+  .text-display-xl {
+    font-size: var(--dg-t-display-xl-font-size);
+    line-height: var(--dg-t-display-xl-line-height);
+    font-weight: var(--dg-t-display-xl-font-weight);
+  }
+
+  .text-display-m {
+    font-size: var(--dg-t-display-md-font-size);
+    line-height: var(--dg-t-display-md-line-height);
+    font-weight: var(--dg-t-display-md-font-weight);
+  }
+
+  .theme-light {
+    display: none;
+  }
+
+  .banner-bg {
+    background: linear-gradient(
+        99.02deg,
+        rgba(17, 21, 23, 0.2) 1.65%,
+        rgba(37, 18, 22, 0.2) 39.55%,
+        rgba(82, 13, 20, 0.2) 59.16%,
+        rgba(50, 65, 154, 0.2) 74.9%,
+        rgba(27, 104, 252, 0.2) 89.13%
+      ),
+      linear-gradient(
+        86.51deg,
+        rgba(20, 37, 69, 0.3) 1.67%,
+        rgba(49, 94, 97, 0.3) 20.83%,
+        rgba(48, 115, 113, 0.3) 30.48%,
+        rgba(34, 73, 74, 0.3) 43.07%,
+        rgba(18, 20, 23, 0.3) 61.08%
+      ),
+      #111417;
+  }
+
+  [data-theme="light"] {
+    .theme-light {
+      display: block;
+    }
+    .theme-dark {
+      display: none;
+    }
+
+    .banner-bg {
+      background: linear-gradient(
+          99.02deg,
+          rgba(255, 255, 255, 0.3) 1.65%,
+          rgba(208, 190, 232, 0.3) 59.16%,
+          rgba(27, 104, 252, 0.3) 89.13%
+        ),
+        linear-gradient(
+          86.51deg,
+          rgba(191, 204, 238, 0.3) 1.67%,
+          rgba(174, 255, 253, 0.3) 32.28%,
+          rgba(233, 229, 244, 0.3) 75.96%,
+          rgba(0, 83, 255, 0.3) 100%
+        ),
+        #ffffff;
+    }
+  }
+}
+
+@layer utilities {
+  .rtl {
+    direction: rtl;
+  }
+
+  .ltr {
+    direction: ltr;
+  }
+}
+
+.dango-tabs-nav > .dango-tabs-nav-operations > button {
+  display: none;
+}
