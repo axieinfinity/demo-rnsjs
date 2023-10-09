@@ -49,10 +49,10 @@
     eslint-plugin-react-hooks "4.6.0"
     eslint-plugin-simple-import-sort "10.0.0"
 
-"@axieinfinity/rnsjs@0.0.18":
-  version "0.0.18"
-  resolved "https://npm.pkg.github.com/download/@axieinfinity/rnsjs/0.0.18/90c574404af97045938acdb2fabd785048e546ed#90c574404af97045938acdb2fabd785048e546ed"
-  integrity sha512-T08dp25SCT+KNe1xj0JDccqREjz2WPvOp0D6Gex7pcVSQM8yrmJQZKUQLPr14hRrrr0ftc4zPB7ozveo5aPfXQ==
+"@axieinfinity/rnsjs@0.0.24":
+  version "0.0.24"
+  resolved "https://npm.pkg.github.com/download/@axieinfinity/rnsjs/0.0.24/6bc3d181551236356782e614f8b2645e51e0aa26#6bc3d181551236356782e614f8b2645e51e0aa26"
+  integrity sha512-lVQzXNsX3rT9shmxg1ZLblda5Lx7vKQToEzQQxXlyfVUEWMZy7JrgucCj5fmsJyiRy35BaZeVv1oJbBedQwpUg==
   dependencies:
     "@adraffy/ens-normalize" "1.9.0"
     "@ensdomains/address-encoder" "0.2.18"
@@ -60,7 +60,7 @@
     "@ensdomains/dnssecoraclejs" "0.2.8"
     cbor "^8.1.0"
     dns-packet "^5.3.1"
-    graphql "^16.3.0"
+    graphql "^16.8.1"
     graphql-request "5.1.0"
     pako "^2.1.0"
     traverse "^0.6.6"
@@ -3604,7 +3604,7 @@ graphql-request@5.1.0:
     extract-files "^9.0.0"
     form-data "^3.0.0"
 
-graphql@^16.3.0:
+graphql@^16.8.1:
   version "16.8.1"
   resolved "https://registry.yarnpkg.com/graphql/-/graphql-16.8.1.tgz#1930a965bef1170603702acdb68aedd3f3cf6f07"
   integrity sha512-59LZHPdGZVh695Ud9lRzPBVTtlX9ZCV150Er2W43ro37wVof0ctenSaskPPjN7lVTIN8mSZt8PHUNKZuNQUuxw==

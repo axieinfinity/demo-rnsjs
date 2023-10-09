@@ -1,9 +1,10 @@
-import { ContractName, ENS } from "@axieinfinity/rnsjs"
+import { ContractName, RNS } from "@axieinfinity/rnsjs"
+import { ethers } from "ethers"
 import React, { createContext, FC, ReactNode, useContext, useMemo, useRef, useState } from "react"
 
 import { useRoninWeb3 } from "./Web3Context"
 
-const opts: ConstructorParameters<typeof ENS>[0] = {}
+const opts: ConstructorParameters<typeof RNS>[0] = {}
 
 if (process.env.NEXT_PUBLIC_PROVIDER && process.env.NEXT_PUBLIC_DEPLOYMENT_ADDRESSES) {
   const deploymentAddresses = JSON.parse(process.env.NEXT_PUBLIC_DEPLOYMENT_ADDRESSES!) as Record<
@@ -16,14 +17,14 @@ if (process.env.NEXT_PUBLIC_PROVIDER && process.env.NEXT_PUBLIC_DEPLOYMENT_ADDRE
 if (process.env.NEXT_PUBLIC_GRAPH_URI) {
   opts.graphURI = process.env.NEXT_PUBLIC_GRAPH_URI
 }
-const defaultValue: ENS = new ENS(opts)
+const defaultValue: RNS = new RNS(opts)
 
 const EnsContext = createContext({
   ...defaultValue,
   ready: false,
 })
 
-interface IRnsContext extends ENS {
+interface IRnsContext extends RNS {
   ready: boolean
 }
 
@@ -37,7 +38,9 @@ const RnsProvider: FC<IRnsProvider> = ({ children }) => {
   const chainSetPromise = useRef<Promise<any> | null>(null)
   const { provider } = useRoninWeb3()
   const setChainPromise = () => {
-    const currentProvider = provider
+    const currentProvider = new ethers.providers.JsonRpcProvider(
+      "https://saigon-testnet.roninchain.com/rpc",
+    )
     // TODO: refactor this
     const currentChainId = 2021
     return defaultValue.setProvider(currentProvider as any, currentChainId).then(() => {
