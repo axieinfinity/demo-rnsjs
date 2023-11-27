@@ -23,7 +23,7 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "ethers": "^6.9.0",
     "lodash": "4.17.21",
-    "next": "13.4.2",
+    "next": "13.5.0",
     "next-transpile-modules": "10.0.0",
     "node-cache": "5.1.2",
     "rc-collapse": "3.5.2",
