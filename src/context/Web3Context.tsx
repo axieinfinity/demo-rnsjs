@@ -1,17 +1,17 @@
+import { JsonRpcProvider, StaticJsonRpcProvider } from "@ethersproject/providers"
 import {
   IConnector,
   IOpenWalletForSignEventArgs,
   RoninExtConnector,
   useWalletgo,
 } from "@roninnetwork/walletgo"
-import { ethers } from "ethers"
 import { noop } from "lodash"
 import { createContext, ReactNode, useCallback, useContext, useEffect } from "react"
 import { isIOS } from "react-device-detect"
 
 export interface IRoninWeb3Context {
-  provider?: ethers.providers.JsonRpcProvider
-  readOnlyProvider?: ethers.providers.StaticJsonRpcProvider
+  provider?: JsonRpcProvider
+  readOnlyProvider?: StaticJsonRpcProvider
   connectedAddress?: string
   chainId?: number
 

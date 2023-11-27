@@ -1,6 +1,11 @@
-const baseConfig = require("@axieinfinity/eslint-config-ronin/config/prettier.cjs")
-
 module.exports = {
-  ...baseConfig,
+  printWidth: 100,
+  tabWidth: 2,
+  useTabs: false,
+  semi: false,
+  singleQuote: false,
+  trailingComma: "all",
+  arrowParens: "avoid",
+  endOfLine: "lf",  
   plugins: [require("prettier-plugin-tailwindcss")],
 }

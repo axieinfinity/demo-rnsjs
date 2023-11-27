@@ -7,13 +7,7 @@ const withBundleAnalyzer = bundleAnalyzer({
   enabled: process.env.ANALYZE === "true",
 })
 
-const withTranspiler = transpiler([
-  "@axieinfinity/ronin-icons",
-  "@axieinfinity/ronin-ui",
-  "@axieinfinity/dango-icons",
-  "@axieinfinity/dango",
-  "@roninnetwork/walletgo",
-])
+const withTranspiler = transpiler(["@roninnetwork/walletgo"])
 
 const cspSecurityHeaders = createSecureHeaders({
   xssProtection: "block-rendering",

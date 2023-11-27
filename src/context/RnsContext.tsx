@@ -1,5 +1,5 @@
-import { ContractName, RNS } from "@axieinfinity/rnsjs"
-import { ethers } from "ethers"
+import { JsonRpcProvider } from "@ethersproject/providers"
+import { ContractName, RNS } from "@roninnetwork/rnsjs"
 import React, { createContext, FC, ReactNode, useContext, useMemo, useRef, useState } from "react"
 
 import { useRoninWeb3 } from "./Web3Context"
@@ -36,13 +36,16 @@ const RnsProvider: FC<IRnsProvider> = ({ children }) => {
   const [ready, setReady] = useState(false)
   const chainIdRef = useRef<number | null>(null)
   const chainSetPromise = useRef<Promise<any> | null>(null)
-  const { provider } = useRoninWeb3()
+  const { provider, chainId } = useRoninWeb3()
+
   const setChainPromise = () => {
-    const currentProvider = new ethers.providers.JsonRpcProvider(
-      "https://saigon-testnet.roninchain.com/rpc",
+    const currentProvider = new JsonRpcProvider(
+      chainId === 2021
+        ? "https://saigon-testnet.roninchain.com/rpc"
+        : "https://api.roninchain.com/rpc",
     )
     // TODO: refactor this
-    const currentChainId = 2021
+    const currentChainId = chainId
     return defaultValue.setProvider(currentProvider as any, currentChainId).then(() => {
       chainIdRef.current = currentChainId
       chainSetPromise.current = null
@@ -51,10 +54,10 @@ const RnsProvider: FC<IRnsProvider> = ({ children }) => {
   }
 
   useMemo(() => {
-    if (typeof window !== "undefined" && !chainSetPromise.current && provider) {
+    if (typeof window !== "undefined" && !chainSetPromise.current && provider && chainId) {
       chainSetPromise.current = setChainPromise()
     }
-  }, [provider])
+  }, [provider, chainId])
 
   const value = useMemo(
     () =>
